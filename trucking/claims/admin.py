@@ -1,0 +1,28 @@
+from django.contrib import admin
+from .models import PreliminaryClaim, ShippingClaim
+
+
+@admin.register(PreliminaryClaim)
+class PreliminaryClaimAdmin(admin.ModelAdmin):
+    list_display = ('shipping_name', 'created')
+    fieldsets = (
+        ('Информация о грузе', {'fields': (('shipping_name', 'gross_weight'), ('count_seats', 'type_seats'),)}),
+        ('Габариты места', {'fields': (('length_seats', 'width_seats', 'height_seats'),)}),
+        ('Вид транспорта', {'fields': (('fly', 'train', 'ship', 'auto'),)}),
+        (None, {'fields': (('point_departure', 'destination'),)}),
+        ('Предпологаемая дата отгрузки', {'fields': (('start_date', 'end_date'),)}),
+        ('Контактная информация', {'fields': ('contact_person', 'phone_number', ('messenger', 'messenger_number'))}),
+    )
+
+
+@admin.register(ShippingClaim)
+class ShippingClaimAdmin(admin.ModelAdmin):
+    list_display = ('user', 'shipping_name', 'created')
+    fieldsets = (
+        (None, {'fields': ('user', )}),
+        ('Информация о грузе', {'fields': ('shipping_name', 'code', ('gross_weight', 'cargo_features', 'cargo_insurance', ),  ('count_seats', 'type_seats'),)}),
+        ('Габариты места', {'fields': (('length_seats', 'width_seats', 'height_seats'),)}),
+        (None, {'fields': ('transport', ('point_departure', 'destination'), 'date_loading',)}),
+        ('Контактная информация', {'fields': ('person_loading', 'per_load_number', ('per_load_msg', 'per_load_msg_number'),
+                                              'person_unloading', 'per_unload_number', ('per_unload_msg', 'per_unload_msg_number'))}),
+    )

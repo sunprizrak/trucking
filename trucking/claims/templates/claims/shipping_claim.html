@@ -1,0 +1,238 @@
+{% extends 'custom_users/cabinet_layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content_cabinet_layout %}
+    <div class="row mb-3">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center mt-2 pb-2">
+                    <h4>Оформление заявки на перевозку</h4>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <form class="container needs-validation" method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col"><hr></div>
+                            <div class="col-3">
+                                <span class="fw-bold d-flex justify-content-center">Информация о грузе</span>
+                            </div>
+                            <div class="col"><hr></div>
+                        </div>
+                        <div class="row mb-3 gx-5">
+                            <div class="col-5">
+                                <label class="form-label">Наименование груза</label>
+                                {{ form.shipping_name }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <label class="form-label">Код ТН ВЭД</label>
+                                {{ form.code }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 gx-5">
+                            <div class="col-3">
+                                <label class="form-label">Вес брутто</label>
+                                {{ form.gross_weight }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label">Особенности груза</label>
+                                <div class="row mt-2">
+                                    {% for radio in form.cargo_features %}
+                                        <div class="col-auto">
+                                            {{ radio }}
+                                        </div>
+                                    {% endfor %}
+                                    <div class="invalid-feedback">
+                                        Обязательное поле.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label">Cтрахование груза</label>
+                                <div class="row mt-2">
+                                    {% for radio in form.cargo_insurance %}
+                                        <div class="col-auto">
+                                            {{ radio }}
+                                        </div>
+                                    {% endfor %}
+                                    <div class="invalid-feedback">
+                                        Обязательное поле.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 gx-5">
+                            <div class="col-3">
+                                <label class="form-label">Колличество мест</label>
+                                {{ form.count_seats }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <label class="form-label">Вид мест</label>
+                                {{ form.type_seats }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="form-label">Габариты места</label>
+                             <div class="col-1">
+                                <label class="col-form-label">Длина</label>
+                             </div>
+                            <div class="col-2">
+                                {{ form.length_seats }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <label class="col-form-label">Ширина</label>
+                            </div>
+                            <div class="col-2">
+                                {{ form.width_seats }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <label class="col-form-label">Высота</label>
+                            </div>
+                            <div class="col-2">
+                                {{ form.height_seats }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <label class="form-label">Пункт отправления</label>
+                                {{ form.point_departure }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label">Пункт Назначения</label>
+                                {{ form.destination }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <label class="form-label">Вид транспорта</label>
+                                {{ form.transport }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3r">
+                            <div class="col-auto">
+                                <label class="form-label">Дата загрузки</label>
+                                {{ form.date_loading }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col"><hr></div>
+                            <div class="col-3 d-flex justify-content-center">
+                                <span class="fw-bold">Контактная информация</span>
+                            </div>
+                            <div class="col"><hr></div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                <label class="form-label">Контактное лицо на загрузке</label>
+                                {{ form.person_loading }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 gx-5">
+                            <div class="col-4">
+                                <label class="form-label">Телефон</label>
+                                {{ form.per_load_number }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <label class="form-label">Messenger</label>
+                                    <div class="col-3">
+                                        {{ form.per_load_msg }}
+                                    </div>
+                                    <div class="col-5">
+                                        {{ form.per_load_msg_number }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                <label class="form-label">Контактное лицо на выгрузке</label>
+                                {{ form.person_unloading }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 gx-5">
+                            <div class="col-4">
+                                <label class="form-label">Телефон</label>
+                                {{ form.per_unload_number }}
+                                <div class="invalid-feedback">
+                                    Обязательное поле.
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <label class="form-label">Messenger</label>
+                                    <div class="col-3">
+                                        {{ form.per_unload_msg }}
+                                    </div>
+                                    <div class="col-5">
+                                        {{ form.per_unload_msg_number }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 justify-content-center">
+                            <div class="col-auto">
+                                {{ form.captcha }}
+                                <div class="mt-1 text-danger">
+                                    {{ form.captcha.errors }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success">Отправить заявку</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

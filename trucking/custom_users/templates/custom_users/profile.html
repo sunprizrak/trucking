@@ -1,0 +1,118 @@
+{% extends 'custom_users/cabinet_layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content_cabinet_layout %}
+    <div class="row mb-3">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center mt-2 pb-2">
+                    <h4>Профиль организации</h4>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <form id="profile-edit" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <label class="form-label">Наименование организации:</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <label class="form-label">Юридический адрес:</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <label class="form-label">Email:</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <label class="form-label">Банковский счёт:</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <label class="form-label">УНП:</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <label class="form-label">Договор на грузоперевозки:</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <label class="form-label">Договор на оказание услуг таможенного представителя:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        {{ form.name }}
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        {{ form.address }}
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        {{ form.bank_account }}
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        {{ form.unp }}
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        {{ form.contract_1 }}
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col mb-3 pt-4">
+                                        {{ form.contract_2 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary btn-sm mt-1">Сохранить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% if user.contract_1 %}
+            <div class="col">
+                <a href="{{ user.contract_1.url }}">Договор на грузоперевозки</a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        {% if user.contract_1 %}
+            <div class="col">
+                <a href="{{ user.contract_2.url }}">Договор на оказание услуг таможенного представителя</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

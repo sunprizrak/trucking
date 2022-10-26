@@ -1,0 +1,70 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <main id="private-office">
+            <div class="container">
+                <div class="row">
+                    <section class="col-2 d-flex justify-content-center bg-light">
+                        <div class="row-cols-1">
+                            <div class="col">
+                                <div class="row-cols-1">
+                                    <div class="col mt-3">
+                                        <h5>Личный кабинет</h5>
+                                    </div>
+                                    <div class="col">
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <ul class="nav flex-column tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded" name="tab-profile" href="{% url 'profile' %}">Профиль</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded" href="#">Сальдо</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark nav-toggle d-flex rounded" data-bs-toggle="collapse" data-bs-target="#insurance-collapse" aria-expanded="true">
+                                            Оформление
+                                        </a>
+                                        <div class="collapse show" id="insurance-collapse">
+                                            <ul class="btn-toggle-nav list-unstyled pb-1 small">
+                                                <li class="mb-1">
+                                                    <a href="{% url 'shipping_claim' %}" name="tab-shipping_claim" class="link-dark rounded">Перевозка</a>
+                                                </li>
+                                                <li class="mb-1"><a href="#tab_office-4" class="link-dark rounded">Стат. декл.</a></li>
+                                                <li class="mb-1"><a href="#tab_office-5" class="link-dark rounded">Имп. декл.</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded" href="#">Aрхив</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded" href="#">Шаблоны документов</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-10">
+                        {% block content_cabinet_layout %}
+                        {% endblock %}
+                    </section>
+                </div>
+            </div>
+        </main>
+    {% else %}
+        <h1 class="text-center mt-5">Авторизуйтесь</h1>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'custom_users/js/bootstrap_toggle_button.js' %}"></script>
+    <script src="{% static 'custom_users/js/nav_menu_focus.js' %}"></script>
+{% endblock %}
