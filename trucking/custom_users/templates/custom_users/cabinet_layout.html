@@ -12,7 +12,7 @@
                         <div class="row-cols-1">
                             <div class="col">
                                 <div class="row-cols-1">
-                                    <div class="col mt-3">
+                                    <div class="col mt-4">
                                         <h5>Личный кабинет</h5>
                                     </div>
                                     <div class="col">
@@ -21,32 +21,55 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <ul class="nav flex-column tabs">
+                                <ul class="nav flex-column" id="nav-profile">
                                     <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" name="tab-profile" href="{% url 'profile' %}">Профиль</a>
+                                        <a class="nav-link link-dark rounded" name="tab-profile" href="{% url 'profile' %}">
+                                            <i class="fa-solid fa-user"></i>
+                                            Профиль
+                                        </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" href="#">Сальдо</a>
+                                        <a class="nav-link link-dark rounded" href="#">
+                                            <i class="fa-solid fa-scale-balanced"></i>
+                                            Сальдо
+                                        </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link link-dark nav-toggle d-flex rounded" data-bs-toggle="collapse" data-bs-target="#insurance-collapse" aria-expanded="true">
+                                        <a class="nav-link link-dark rounded" id="nav-profile-toogle" role="button" data-bs-toggle="collapse" data-bs-target="#insurance-collapse" aria-expanded="true">
+                                            <i class="fa-solid fa-caret-right"></i>
                                             Оформление
                                         </a>
-                                        <div class="collapse show" id="insurance-collapse">
-                                            <ul class="btn-toggle-nav list-unstyled pb-1 small">
-                                                <li class="mb-1">
-                                                    <a href="{% url 'shipping_claim' %}" name="tab-shipping_claim" class="link-dark rounded">Перевозка</a>
+                                        <div class="container">
+                                            <ul class="nav collapse show" id="insurance-collapse">
+                                                <li class="nav-item">
+                                                    <a class="nav-link link-dark rounded" href="{% url 'shipping_claim' %}" name="tab-shipping_claim">
+                                                        Перевозка
+                                                    </a>
                                                 </li>
-                                                <li class="mb-1"><a href="#tab_office-4" class="link-dark rounded">Стат. декл.</a></li>
-                                                <li class="mb-1"><a href="#tab_office-5" class="link-dark rounded">Имп. декл.</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link link-dark rounded" href="#tab_office-4">
+                                                        Статическая декларация
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link link-dark rounded" href="#tab_office-5">
+                                                        Импортная декларация
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" href="#">Aрхив</a>
+                                        <a class="nav-link link-dark rounded" href="#">
+                                            <i class="fa-solid fa-box"></i>
+                                            Aрхив
+                                        </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" href="#">Шаблоны документов</a>
+                                        <a class="nav-link link-dark rounded" href="#">
+                                            <i class="fa-solid fa-file-invoice"></i>
+                                            Шаблоны документов
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

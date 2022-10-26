@@ -7,10 +7,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}?v=1.0"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'main/img/' %}"/>
-    <link rel="stylesheet" href="{% static 'main/css/style.css' %}?v=1.0">
     <!-- Fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <!--Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <!-- Bootstrap 5 -->
@@ -21,10 +21,15 @@
     {% include 'main/header.html' %}
     {% block content %}
     {% endblock %}
-</body>
     {% include 'claims/preliminary_claim.html' %}
+    <div class="preloader">
+        <div class="preloader__loader">
+            <img src="loader.gif" alt="" />
+        </div>
+    </div>
     <script>let csrftoken = '{{ csrf_token }}';</script>
     <script src="{% static 'claims/js/claims_forms.js' %}"></script>
     {% block js %}
     {% endblock %}
+</body>
 </html>

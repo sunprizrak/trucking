@@ -19,9 +19,9 @@ class CustomUser(PermissionsMixin, AbstractBaseUser):
     name = models.CharField(verbose_name='Наименование организации', max_length=255, blank=True)
     address = models.CharField(verbose_name='Юридический адрес', max_length=255, blank=True)
     bank_account = models.CharField(verbose_name='Банковский счёт', max_length=40, blank=True)
-    unp = models.CharField(verbose_name='УНП', max_length=30, blank=True)
-    contract_1 = models.FileField(verbose_name='Договор на грузоперевозки', upload_to=path_contract_1, blank=True)
-    contract_2 = models.FileField(verbose_name='Договор на оказание услуг таможенного представителя', upload_to=path_contract_2, blank=True)
+    unp = models.CharField(verbose_name='УНП', max_length=9, blank=True)
+    contract_1 = models.FileField(verbose_name='Договор на грузоперевозки', max_length=255, upload_to=path_contract_1, blank=True)
+    contract_2 = models.FileField(verbose_name='Договор на оказание услуг таможенного представителя', max_length=255, upload_to=path_contract_2, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     is_staff = models.BooleanField(
         _("staff status"),

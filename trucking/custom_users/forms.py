@@ -24,15 +24,16 @@ class UserEditForm(UserChangeForm):
             'bank_account': forms.TextInput(attrs={
                 'class': 'form-control form-control-sm text-center',
             }),
-            'unp': forms.TextInput(attrs={
+            'unp': forms.NumberInput(attrs={
                 'class': 'form-control form-control-sm text-center',
+                'max': '999999999',
             }),
             'contract_1': forms.FileInput(attrs={
                 'class': 'form-control form-control-sm',
-                'accept': '.pdf, .docx, .doc, .odf',
+                'accept': '.pdf, .docx, .doc, .odf, xlsx',
             }),
             'contract_2': forms.FileInput(attrs={
                 'class': 'form-control form-control-sm',
-                'accept': '.pdf, .docx, .doc, .odf',
+                'accept': '.pdf, .docx, .doc, .odf, .xlsx',
             }),
         }

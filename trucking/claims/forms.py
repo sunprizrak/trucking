@@ -81,17 +81,15 @@ class PreliminaryClaimForm(forms.ModelForm):
                 'required': True,
                 'placeholder': 'дд.мм.гггг',
             }),
-            'phone_number': forms.TextInput(attrs={
+            'phone_number': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'type': 'tel',
                 'required': True,
             }),
             'messenger': forms.Select(attrs={
                 'class': 'form-select',
             }),
-            'messenger_number': forms.TextInput(attrs={
+            'messenger_number': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'type': 'tel',
             }),
             'contact_person': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -149,8 +147,9 @@ class ShippingClaimForm(forms.ModelForm):
                 'class': 'form-control',
                 'required': True,
             }),
-            'code': forms.TextInput(attrs={
+            'code': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'max': 9999999999,
                 'required': True,
             }),
             'cargo_features': forms.RadioSelect(attrs={
@@ -177,7 +176,7 @@ class ShippingClaimForm(forms.ModelForm):
                 'class': 'form-control',
                 'required': True,
             }),
-            'per_load_number': forms.TextInput(attrs={
+            'per_load_number': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'required': True,
             }),
@@ -191,7 +190,7 @@ class ShippingClaimForm(forms.ModelForm):
                 'class': 'form-control',
                 'required': True,
             }),
-            'per_unload_number': forms.TextInput(attrs={
+            'per_unload_number': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'required': True,
             }),

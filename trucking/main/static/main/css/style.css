@@ -1,2 +1,11 @@
 @import url('/static/claims/css/claims.css');
 @import url('/static/custom_users/css/profile.css');
+
+
+/* Убрать справа кнопки с input=number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

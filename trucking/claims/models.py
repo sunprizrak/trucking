@@ -38,6 +38,7 @@ class PreliminaryClaim(Claim):
         ('WTA', 'WhatsApp'),
         ('VB', 'Viber'),
         ('TG', 'Telegram'),
+        ('SKP', 'Skype')
     )
     messenger = models.CharField(verbose_name='Messenger', max_length=3, choices=MESENGERS, blank=True)
     messenger_number = models.CharField(verbose_name='Номер мессенджера', max_length=30, blank=True)
@@ -49,7 +50,7 @@ class PreliminaryClaim(Claim):
 
 class ShippingClaim(Claim):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    code = models.CharField(verbose_name='Код ТН ВЭД', max_length=20)
+    code = models.CharField(verbose_name='Код ТН ВЭД', max_length=10)
     FEATURES = (
         ('D', 'Опасный'),
         ('ND', 'Не опасный'),
@@ -76,6 +77,7 @@ class ShippingClaim(Claim):
         ('WTA', 'WhatsApp'),
         ('VB', 'Viber'),
         ('TG', 'Telegram'),
+        ('SKP', 'Skype'),
     )
     per_load_msg = models.CharField(verbose_name='Messenger', max_length=3, choices=MESENGERS, blank=True)
     per_load_msg_number = models.CharField(verbose_name='Номер мессенджера', max_length=30, blank=True)
