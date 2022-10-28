@@ -1,3 +1,23 @@
+function validate_form() {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  let forms = document.querySelectorAll('.needs-validation');
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+      }, false)
+    });
+}
+
 function validate_modal_form() {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     let forms = document.querySelectorAll('.modal .needs-validation');
@@ -20,6 +40,18 @@ function validate_modal_form() {
                     success: function(data) {
                         if (data.result == true) {
                             $(id_form + ' button[name=close_modal_form]').click();
+                            let myAlert = $('<div' +
+                                                 ' class="alert alert-success alert-dismissible' +
+                                                    ' d-flex align-items-center position-absolute' +
+                                                    ' top-50 start-50 animate__animated animate__backInDown">' +
+                                                 '<i class="fa-solid fa-circle-check"' +
+                                                 ' style="margin-right: 0.5rem; font-size: 1.5rem;"></i>' +
+                                                 '<div>Ставка запрошена успешно!</div>' +
+                                             '</div>')
+                            $('body main').append(myAlert).delay(3000).queue(function() {
+                                $('body main .alert').remove();
+                                $(this).dequeue();
+                            });
                         } else {
                            $(id_form + ' .captcha-error').css('display', 'block');
                         }
@@ -30,27 +62,7 @@ function validate_modal_form() {
     });
 }
 
-function validate_form() {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  let forms = document.querySelectorAll('.needs-validation');
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-
-        form.classList.add('was-validated');
-      }, false)
-    });
-}
-
-function clear_form() {
+function clear_modal_form() {
     $('form button[name=close_modal_form]').on('click', function() {
         let form = $(this).parents('form');
         form[0].reset();
@@ -67,5 +79,5 @@ function clear_form() {
 $(function () {
     validate_form();
     validate_modal_form();
-    clear_form();
+    clear_modal_form();
 });

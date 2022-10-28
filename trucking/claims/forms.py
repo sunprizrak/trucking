@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from .models import PreliminaryClaim, ShippingClaim
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
@@ -88,7 +87,7 @@ class PreliminaryClaimForm(forms.ModelForm):
             'messenger': forms.Select(attrs={
                 'class': 'form-select',
             }),
-            'messenger_number': forms.NumberInput(attrs={
+            'messenger_number': forms.TextInput(attrs={
                 'class': 'form-control',
             }),
             'contact_person': forms.TextInput(attrs={
@@ -149,6 +148,7 @@ class ShippingClaimForm(forms.ModelForm):
             }),
             'code': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'min': 1111111111,
                 'max': 9999999999,
                 'required': True,
             }),
