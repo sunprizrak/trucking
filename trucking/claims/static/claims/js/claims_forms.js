@@ -41,14 +41,14 @@ function validate_modal_form() {
                         if (data.result == true) {
                             $(id_form + ' button[name=close_modal_form]').click();
                             let myAlert = $('<div' +
-                                                 ' class="alert alert-success alert-dismissible' +
+                                                 ' class="alert alert-success' +
                                                     ' d-flex align-items-center position-absolute' +
                                                     ' top-50 start-50 animate__animated animate__backInDown">' +
                                                  '<i class="fa-solid fa-circle-check"' +
                                                  ' style="margin-right: 0.5rem; font-size: 1.5rem;"></i>' +
                                                  '<div>Ставка запрошена успешно!</div>' +
                                              '</div>')
-                            $('body main').append(myAlert).delay(3000).queue(function() {
+                            $('body main').append(myAlert).delay(5000).queue(function() {
                                 $('body main .alert').remove();
                                 $(this).dequeue();
                             });
@@ -74,7 +74,6 @@ function clear_modal_form() {
         }
     });
 }
-
 
 $(function () {
     validate_form();
