@@ -43,6 +43,9 @@ class PreliminaryClaim(Claim):
     messenger = models.CharField(verbose_name='Messenger', max_length=3, choices=MESENGERS, blank=True)
     messenger_number = models.CharField(verbose_name='Номер мессенджера', max_length=30, blank=True)
 
+    def __str__(self):
+        return self.contact_person
+
     class Meta:
         verbose_name = 'Предварительная заявка'
         verbose_name_plural = 'Предварительные заявки'
@@ -85,6 +88,9 @@ class ShippingClaim(Claim):
     per_unload_number = models.CharField(verbose_name='Номер телефона', max_length=30)
     per_unload_msg = models.CharField(verbose_name='Messenger', max_length=3, choices=MESENGERS, blank=True)
     per_unload_msg_number = models.CharField(verbose_name='Номер мессенджера', max_length=30, blank=True)
+
+    def __str__(self):
+        return self.user.name
 
     class Meta:
         verbose_name = 'Заявка на перевозку'

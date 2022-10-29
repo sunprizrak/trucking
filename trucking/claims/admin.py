@@ -4,7 +4,7 @@ from .models import PreliminaryClaim, ShippingClaim
 
 @admin.register(PreliminaryClaim)
 class PreliminaryClaimAdmin(admin.ModelAdmin):
-    list_display = ('shipping_name', 'created')
+    list_display = ('contact_person', 'created')
     fieldsets = (
         ('Информация о грузе', {'fields': (('shipping_name', 'gross_weight'), ('count_seats', 'type_seats'),)}),
         ('Габариты места', {'fields': (('length_seats', 'width_seats', 'height_seats'),)}),
@@ -13,6 +13,8 @@ class PreliminaryClaimAdmin(admin.ModelAdmin):
         ('Предпологаемая дата отгрузки', {'fields': (('start_date', 'end_date'),)}),
         ('Контактная информация', {'fields': ('contact_person', 'phone_number', ('messenger', 'messenger_number'))}),
     )
+    search_fields = ("contact_person", "phone_number")
+    ordering = ("-created",)
 
 
 @admin.register(ShippingClaim)
@@ -26,3 +28,5 @@ class ShippingClaimAdmin(admin.ModelAdmin):
         ('Контактная информация', {'fields': ('person_loading', 'per_load_number', ('per_load_msg', 'per_load_msg_number'),
                                               'person_unloading', 'per_unload_number', ('per_unload_msg', 'per_unload_msg_number'))}),
     )
+    search_fields = ('user', )
+    ordering = ('-created',)

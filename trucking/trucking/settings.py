@@ -21,7 +21,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'main',
     'claims',
-    'custom_users',
     'captcha',
     'grappelli',
     'django.contrib.admin',
@@ -31,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'custom_users',
     'django_cleanup.apps.CleanupConfig',
 ]
 
