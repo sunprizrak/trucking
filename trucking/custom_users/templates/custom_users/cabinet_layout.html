@@ -8,74 +8,61 @@
         <main id="private-office">
             <div class="container">
                 <div class="row">
-                    <section class="col-2 d-flex justify-content-center bg-light">
-                        <div class="row-cols-1">
-                            <div class="col">
-                                <div class="row-cols-1">
-                                    <div class="col mt-4">
-                                        <h5>Личный кабинет</h5>
+                    <section id="col-left-menu" class="col-2 pt-3">
+                        <div id="left-menu" class="position-sticky">
+                            <ul class="nav flex-column pt-2" id="nav-profile">
+                                <li class="nav-item">
+                                    <a class="nav-link link-dark rounded" name="tab-profile" href="{% url 'profile' %}">
+                                        <i class="fa-solid fa-user"></i>
+                                        Профиль
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-dark rounded" href="#">
+                                        <i class="fa-solid fa-scale-balanced"></i>
+                                        Сальдо
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-dark rounded" id="nav-profile-toogle" role="button" data-bs-toggle="collapse" data-bs-target="#insurance-collapse" aria-expanded="true">
+                                        <i class="fa-solid fa-caret-right"></i>
+                                        Оформление
+                                    </a>
+                                    <div class="container">
+                                        <ul class="nav collapse show" id="insurance-collapse">
+                                            <li class="nav-item">
+                                                <a class="nav-link link-dark rounded" href="{% url 'shipping_claim' %}" name="tab-shipping_claim">
+                                                    Перевозка
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link link-dark rounded" href="#tab_office-4">
+                                                    Статическая декларация
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link link-dark rounded" href="#tab_office-5">
+                                                    Импортная декларация
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div class="col">
-                                        <hr>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <ul class="nav flex-column" id="nav-profile">
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" name="tab-profile" href="{% url 'profile' %}">
-                                            <i class="fa-solid fa-user"></i>
-                                            Профиль
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" href="#">
-                                            <i class="fa-solid fa-scale-balanced"></i>
-                                            Сальдо
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" id="nav-profile-toogle" role="button" data-bs-toggle="collapse" data-bs-target="#insurance-collapse" aria-expanded="true">
-                                            <i class="fa-solid fa-caret-right"></i>
-                                            Оформление
-                                        </a>
-                                        <div class="container">
-                                            <ul class="nav collapse show" id="insurance-collapse">
-                                                <li class="nav-item">
-                                                    <a class="nav-link link-dark rounded" href="{% url 'shipping_claim' %}" name="tab-shipping_claim">
-                                                        Перевозка
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link link-dark rounded" href="#tab_office-4">
-                                                        Статическая декларация
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link link-dark rounded" href="#tab_office-5">
-                                                        Импортная декларация
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" href="#">
-                                            <i class="fa-solid fa-box"></i>
-                                            Aрхив
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark rounded" href="#">
-                                            <i class="fa-solid fa-file-invoice"></i>
-                                            Шаблоны документов
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-dark rounded" href="#">
+                                    <i class="fa-solid fa-box"></i>
+                                    Aрхив
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-dark rounded" href="#">
+                                    <i class="fa-solid fa-file-invoice"></i>
+                                    Шаблоны документов
+                                </a>
+                            </li>
+                        </ul>
                     </section>
-                    <section class="col-10">
+                    <section class="col-10 pt-3">
                         {% include 'main/messages.html' %}
                         {% block content_cabinet_layout %}
                         {% endblock %}
@@ -91,4 +78,8 @@
 {% block js %}
     <script src="{% static 'custom_users/js/bootstrap_toggle_button.js' %}"></script>
     <script src="{% static 'custom_users/js/nav_menu_focus.js' %}"></script>
+    <script>
+        let position = $('#left-menu').position();
+        $('#left-menu').css('top', position.top);
+    </script>
 {% endblock %}

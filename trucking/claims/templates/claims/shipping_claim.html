@@ -7,7 +7,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="row">
-                <div class="col d-flex justify-content-center mt-2 pb-2">
+                <div class="col d-flex justify-content-center pb-2">
                     <h4>Оформление заявки на перевозку</h4>
                 </div>
             </div>
@@ -89,34 +89,32 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row mb-3">
-                            <label class="form-label">Габариты места</label>
-                             <div class="col-1">
-                                <label class="col-form-label">Длина</label>
-                             </div>
-                            <div class="col-2">
-                                {{ form.length_seats }}
-                                <div class="invalid-feedback">
-                                    Обязательное поле.
+                            <label class="form-label">Габариты места (д/ш/в)</label>
+                            <div class="input-group">
+                                <div class="col-2">
+                                    {{ form.length_seats }}
+                                    <div class="invalid-feedback">
+                                        Обязательное поле.
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-1">
-                                <label class="col-form-label">Ширина</label>
-                            </div>
-                            <div class="col-2">
-                                {{ form.width_seats }}
-                                <div class="invalid-feedback">
-                                    Обязательное поле.
+                                <div class="col-auto">
+                                    <span class="input-group-text">/</span>
                                 </div>
-                            </div>
-                            <div class="col-1">
-                                <label class="col-form-label">Высота</label>
-                            </div>
-                            <div class="col-2">
-                                {{ form.height_seats }}
-                                <div class="invalid-feedback">
-                                    Обязательное поле.
+                                <div class="col-2">
+                                    {{ form.width_seats }}
+                                    <div class="invalid-feedback">
+                                        Обязательное поле.
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <span class="input-group-text">/</span>
+                                </div>
+                                <div class="col-2">
+                                    {{ form.height_seats }}
+                                    <div class="invalid-feedback">
+                                        Обязательное поле.
+                                    </div>
                                 </div>
                             </div>
                         </div>

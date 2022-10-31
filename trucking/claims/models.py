@@ -4,8 +4,8 @@ from django.db import models
 
 class Claim(models.Model):
     shipping_name = models.CharField(verbose_name='Наименование груза', max_length=100)
-    gross_weight = models.DecimalField(verbose_name='Вес брутто', default=0.0, max_digits=10, decimal_places=1)
-    count_seats = models.IntegerField(verbose_name='Колличество мест', default=0)
+    gross_weight = models.DecimalField(verbose_name='Вес брутто', max_digits=10, decimal_places=1)
+    count_seats = models.IntegerField(verbose_name='Колличество мест')
     TYPESEATS = (
         (None, 'Выбрать'),
         ('1', 'Паллеты'),
@@ -15,9 +15,9 @@ class Claim(models.Model):
         ('6', 'Коробки'),
         ('6', 'Другое'),
     )
-    length_seats = models.DecimalField(verbose_name='Длина', default=0.0, max_digits=10, decimal_places=1)
-    width_seats = models.DecimalField(verbose_name='Ширина', default=0.0, max_digits=10, decimal_places=1)
-    height_seats = models.DecimalField(verbose_name='Высота', default=0.0, max_digits=10, decimal_places=1)
+    length_seats = models.DecimalField(verbose_name='Длина', max_digits=10, decimal_places=1)
+    width_seats = models.DecimalField(verbose_name='Ширина', max_digits=10, decimal_places=1)
+    height_seats = models.DecimalField(verbose_name='Высота', max_digits=10, decimal_places=1)
     type_seats = models.CharField(verbose_name='Вид мест', max_length=1, choices=TYPESEATS)
     point_departure = models.CharField(verbose_name='Пункт отправления', max_length=100)
     destination = models.CharField(verbose_name='Пункт назначения', max_length=100)

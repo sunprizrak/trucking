@@ -1,5 +1,5 @@
 @import url('/static/claims/css/claims.css');
-@import url('/static/custom_users/css/profile.css');
+@import url('/static/custom_users/css/cabinet.css');
 
 
 /* Убрать справа кнопки с input=number */
@@ -8,4 +8,43 @@ input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.navbar {
+    background: #fff;
+}
+
+#username[aria-expanded='true'] i {
+    transform: rotate(-90deg);
+}
+
+#username i {
+    font-size: 13px;
+}
+
+#username {
+    background: #fff;
+    /*border-color: red;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;*/
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+#username-menu {
+    background: #fff;
+    /*border-color: red;
+    border-style: solid;
+    border-width: 0 1px 1px 1px;*/
+    border-width: 0 0 0 0;
+    border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.dropdown-menu[data-bs-popper] {
+    margin-top: 0 !important;
+}
+
+.alert {
+    top: 30%;
+    left: 40%;
 }

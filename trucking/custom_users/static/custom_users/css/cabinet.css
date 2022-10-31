@@ -1,5 +1,13 @@
+#col-left-menu {
+    border-right: 1px solid #c8c9ca;
+}
+
 #nav-profile-toogle[aria-expanded='true'] i {
     transform: rotate(90deg);
+}
+
+#nav-profile-toogle i {
+    font-size: 14px;
 }
 
 #insurance-collapse .nav-item {

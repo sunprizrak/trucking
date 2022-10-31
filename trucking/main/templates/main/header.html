@@ -1,8 +1,8 @@
 {% load static %}
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header class="mb-5">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Логотип</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,11 +27,17 @@
             </div>
             {% if request.user.is_authenticated %}
                 <div class="dropdown">
-                    <a id="username" class="dropdown-toggle nav-link link-dark" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.email }}</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="username">
-                        <li class="dropdown-item"><a class="nav-link link-dark" href="{% url 'profile' %}">Личный кабинет</a></li>
-                        <li class="dropdown-item"><a class="nav-link link-dark" href="{% url 'logout' %}">Выйти</a></li>
-                    </ul>
+                    <a id="username" class="nav-link link-dark" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user.email }}
+                        <i class="fa-solid fa-caret-left"></i>
+                    </a>
+                    <div id="username-menu" class="container dropdown-menu dropdown-menu-end" aria-labelledby="username">
+                        <ul class="nav flex-column text-center" >
+                            <li class="nav-item"><a class="nav-link link-dark rounded" href="{% url 'profile' %}">Личный кабинет</a></li>
+                            <li class="nav-item"><a class="nav-link link-dark rounded" href="{% url 'logout' %}">Выйти</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             {% else %}
                 <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}"><button class="btn btn-outline-success ms-3">Личный кабинет</button></a>

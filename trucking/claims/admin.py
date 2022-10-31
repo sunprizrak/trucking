@@ -19,7 +19,16 @@ class PreliminaryClaimAdmin(admin.ModelAdmin):
 
 @admin.register(ShippingClaim)
 class ShippingClaimAdmin(admin.ModelAdmin):
-    list_display = ('user', 'shipping_name', 'created')
+    list_display = ('get_email', 'get_name', 'shipping_name', 'created')
+
+    @admin.display(ordering='user__email', description='Пользователь')
+    def get_email(self, obj):
+        return obj.user.email
+
+    @admin.display(ordering='user__name', description='Наименование организации')
+    def get_name(self, obj):
+        return obj.user.name
+
     fieldsets = (
         (None, {'fields': ('user', )}),
         ('Информация о грузе', {'fields': ('shipping_name', 'code', ('gross_weight', 'cargo_features', 'cargo_insurance', ),  ('count_seats', 'type_seats'),)}),
@@ -28,5 +37,5 @@ class ShippingClaimAdmin(admin.ModelAdmin):
         ('Контактная информация', {'fields': ('person_loading', 'per_load_number', ('per_load_msg', 'per_load_msg_number'),
                                               'person_unloading', 'per_unload_number', ('per_unload_msg', 'per_unload_msg_number'))}),
     )
-    search_fields = ('user', )
+    search_fields = ('user__email', 'user__name',)
     ordering = ('-created',)

@@ -17,11 +17,13 @@ class PreliminaryClaimForm(forms.ModelForm):
             }),
             'gross_weight': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0.0',
                 'required': True,
                 'min': 0,
             }),
             'count_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0',
                 'required': True,
                 'min': 0,
             }),
@@ -31,16 +33,19 @@ class PreliminaryClaimForm(forms.ModelForm):
             }),
             'length_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0.0',
                 'required': True,
                 'min': 0,
             }),
             'width_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0.0',
                 'required': True,
                 'min': 0,
             }),
             'height_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0.0',
                 'required': True,
                 'min': 0,
             }),
@@ -59,6 +64,7 @@ class PreliminaryClaimForm(forms.ModelForm):
             'auto': forms.CheckboxInput(attrs={
                 'class': 'form-check-input',
                 'type': 'checkbox',
+                'checked': True,
             }),
             'point_departure': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -111,11 +117,13 @@ class ShippingClaimForm(forms.ModelForm):
             }),
             'gross_weight': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0.0',
                 'required': True,
                 'min': 0,
             }),
             'count_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0',
                 'required': True,
                 'min': 0,
             }),
@@ -125,16 +133,19 @@ class ShippingClaimForm(forms.ModelForm):
             }),
             'length_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0.0',
                 'required': True,
                 'min': 0,
             }),
             'width_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0.0',
                 'required': True,
                 'min': 0,
             }),
             'height_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
+                'placeholder': '0.0',
                 'required': True,
                 'min': 0,
             }),
