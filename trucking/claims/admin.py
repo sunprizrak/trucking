@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import PreliminaryClaim, ShippingClaim
+from .models import PreliminaryClaim, ShippingClaim, ClaimDoc
+
+
+@admin.register(ClaimDoc)
+class ClaimDocAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(PreliminaryClaim)

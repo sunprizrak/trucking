@@ -31,6 +31,7 @@ function validate_modal_form() {
             } else {
                 let valid_form = $(this).serialize();
                 let id_form = '#' + $(this).attr('id');
+                let csrftoken = $.cookie('csrftoken');
                 $.ajax({
                     headers: {
                         'X-CSRFToken': csrftoken,
@@ -75,8 +76,9 @@ function clear_modal_form() {
     });
 }
 
+
 $(function () {
     validate_form();
     validate_modal_form();
-    clear_modal_form();
+    // clear_modal_form();
 });

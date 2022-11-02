@@ -64,7 +64,6 @@ class PreliminaryClaimForm(forms.ModelForm):
             'auto': forms.CheckboxInput(attrs={
                 'class': 'form-check-input',
                 'type': 'checkbox',
-                'checked': True,
             }),
             'point_departure': forms.TextInput(attrs={
                 'class': 'form-control',

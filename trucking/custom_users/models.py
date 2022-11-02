@@ -4,14 +4,16 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from .managers import CustomUserManager
+import os
+from trucking.settings import MEDIA_ROOT
 
 
 def path_contract_1(instance, filename):
-    return 'Договоры/{user_name}/грузоперевозки/{user_email}/{filename}'.format(user_name=instance.name,user_email=instance.email, filename=filename)
+    return 'Организации/{user_unp}/Договоры/Грузоперевозки/{user_email}/{filename}'.format(user_unp=instance.unp, user_email=instance.email, filename=filename)
 
 
 def path_contract_2(instance, filename):
-    return 'Договоры/{user_name}/таможенный_представитель/{user_email}/{filename}'.format(user_name=instance.name, user_email=instance.email, filename=filename)
+    return 'Организации/{user_unp}/Договоры/Таможенный_представитель/{user_email}/{filename}'.format(user_unp=instance.unp, user_email=instance.email, filename=filename)
 
 
 class CustomUser(PermissionsMixin, AbstractBaseUser):

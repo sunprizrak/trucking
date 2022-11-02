@@ -95,3 +95,8 @@ class ShippingClaim(Claim):
     class Meta:
         verbose_name = 'Заявка на перевозку'
         verbose_name_plural = 'Заявки на перевозку'
+
+
+class ClaimDoc(models.Model):
+    claim = models.ForeignKey(ShippingClaim, on_delete=models.CASCADE)
+    doc = models.FileField(verbose_name='Документ(Заявка)', max_length=255)
