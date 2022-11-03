@@ -4,8 +4,6 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from .managers import CustomUserManager
-import os
-from trucking.settings import MEDIA_ROOT
 
 
 def path_contract_1(instance, filename):
@@ -55,6 +53,10 @@ class CustomUser(PermissionsMixin, AbstractBaseUser):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def check_profile(self):
+        profile_fields = [self.name, self.address, self.bank_account, self.unp]
+        return all(profile_fields)
 
     def __str__(self):
         return self.email

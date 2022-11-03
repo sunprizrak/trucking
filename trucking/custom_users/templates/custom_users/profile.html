@@ -13,7 +13,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col d-flex justify-content-center">
-                    <form id="profile-edit" method="POST" enctype="multipart/form-data">
+                    <form id="profile-edit" class="needs-validation" method="POST" enctype="multipart/form-data" novalidate>
                         {% csrf_token %}
                         <div class="row">
                             <div class="col">
@@ -77,6 +77,9 @@
                                 <div class="row mb-3">
                                     <div class="col">
                                         {{ form.unp }}
+                                        <div class="invalid-feedback">
+                                            Должен состоять из 9 цифр.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

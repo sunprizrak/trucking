@@ -26,7 +26,9 @@ class UserEditForm(UserChangeForm):
             }),
             'unp': forms.NumberInput(attrs={
                 'class': 'form-control form-control-sm text-center',
-                'max': '999999999',
+                'min': 111111111,
+                'max': 999999999,
+                'required': True,
             }),
             'contract_1': forms.FileInput(attrs={
                 'class': 'form-control form-control-sm',
