@@ -3,6 +3,14 @@ from django.db import models
 from .utils import create_doc
 
 
+def path_static_dec(instance, filename):
+    return 'Организации/{user_unp}/Документы(Заявки)/Статическая_декларация/{user_email}/{filename}'.format(user_unp=instance.unp, user_email=instance.email, filename=filename)
+
+
+def path_import_dec(instance, filename):
+    return 'Организации/{user_unp}/Документы(Заявки)/Импортная_декларация/{user_email}/{filename}'.format(user_unp=instance.unp, user_email=instance.email, filename=filename)
+
+
 class Claim(models.Model):
     shipping_name = models.CharField(verbose_name='Наименование груза', max_length=100)
     gross_weight = models.DecimalField(verbose_name='Вес брутто', max_digits=10, decimal_places=1)
@@ -104,3 +112,9 @@ class ShippingClaim(Claim):
         verbose_name_plural = 'Заявки на перевозку'
 
 
+class StaticDeclaration(models.Model):
+    doc = models.FileField(verbose_name='Статическая декларация', max_length=255, upload_to=path_static_dec, blank=True)
+
+
+class ImportDeclaration(models.Model):
+    doc = models.FileField(verbose_name='Импортная декларация', max_length=255, upload_to=path_import_dec, blank=True)
