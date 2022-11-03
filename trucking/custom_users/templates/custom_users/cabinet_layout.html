@@ -36,31 +36,32 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link link-dark rounded" href="#tab_office-4">
+                                                <a class="nav-link link-dark rounded" href="{% url 'static_declaration' %}" name="tab-static_declaration">
                                                     Статическая декларация
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link link-dark rounded" href="#tab_office-5">
+                                                <a class="nav-link link-dark rounded" href="{% url 'import_declaration' %}" name="tab-import_declaration">
                                                     Импортная декларация
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-dark rounded" href="#">
-                                    <i class="fa-solid fa-box"></i>
-                                    Aрхив
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-dark rounded" href="#">
-                                    <i class="fa-solid fa-file-invoice"></i>
-                                    Шаблоны документов
-                                </a>
-                            </li>
-                        </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link link-dark rounded" href="#">
+                                        <i class="fa-solid fa-box"></i>
+                                        Aрхив
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-dark rounded" href="#">
+                                        <i class="fa-solid fa-file-invoice"></i>
+                                        Шаблоны документов
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </section>
                     <section class="col-10 pt-3">
                         {% include 'main/messages.html' %}

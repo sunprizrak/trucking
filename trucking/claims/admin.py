@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PreliminaryClaim, ShippingClaim
+from .models import PreliminaryClaim, ShippingClaim, StaticDeclaration, ImportDeclaration
 
 
 @admin.register(PreliminaryClaim)
@@ -40,3 +40,14 @@ class ShippingClaimAdmin(admin.ModelAdmin):
     )
     search_fields = ('user__email', 'user__name',)
     ordering = ('-created',)
+
+
+@admin.register(StaticDeclaration)
+class StaticDeclarationAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(ImportDeclaration)
+class ImportDeclarationAdmin(admin.ModelAdmin):
+    pass
+

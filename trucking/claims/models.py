@@ -53,11 +53,11 @@ class PreliminaryClaim(Claim):
     messenger_number = models.CharField(verbose_name='Номер мессенджера', max_length=30, blank=True)
 
     def __str__(self):
-        return self.contact_person
+        return f'Запрос ставки на перевозку {self.shipping_name}'
 
     class Meta:
-        verbose_name = 'Предварительная заявка'
-        verbose_name_plural = 'Предварительные заявки'
+        verbose_name = 'Запрашиваемая ставка'
+        verbose_name_plural = 'Запрашиваемые ставки'
 
 
 class ShippingClaim(Claim):
@@ -105,7 +105,7 @@ class ShippingClaim(Claim):
         super().save()
 
     def __str__(self):
-        return self.shipping_name
+        return f'Заявка на перевозку {self.shipping_name}'
 
     class Meta:
         verbose_name = 'Заявка на перевозку'
@@ -113,8 +113,26 @@ class ShippingClaim(Claim):
 
 
 class StaticDeclaration(models.Model):
-    doc = models.FileField(verbose_name='Статическая декларация', max_length=255, upload_to=path_static_dec, blank=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    doc = models.FileField(verbose_name='Статическая декларация', max_length=255, upload_to=path_static_dec)
+    created = models.DateTimeField(verbose_name='Создана', auto_now_add=True)
+
+    def __str__(self):
+        return f'Статическая декларация {self.user}'
+
+    class Meta:
+        verbose_name = 'Статическая декларация'
+        verbose_name_plural = 'Статические декларации'
 
 
 class ImportDeclaration(models.Model):
-    doc = models.FileField(verbose_name='Импортная декларация', max_length=255, upload_to=path_import_dec, blank=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    doc = models.FileField(verbose_name='Импортная декларация', max_length=255, upload_to=path_import_dec)
+    created = models.DateTimeField(verbose_name='Создана', auto_now_add=True)
+
+    def __str__(self):
+        return f'Импортная декларация {self.user}'
+
+    class Meta:
+        verbose_name = 'Импортная декларация'
+        verbose_name_plural = 'Импортные декларации'

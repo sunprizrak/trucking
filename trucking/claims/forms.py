@@ -1,5 +1,5 @@
 from django import forms
-from .models import PreliminaryClaim, ShippingClaim
+from .models import PreliminaryClaim, ShippingClaim, StaticDeclaration, ImportDeclaration
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
 
@@ -211,3 +211,21 @@ class ShippingClaimForm(forms.ModelForm):
                 'class': 'form-control',
             }),
         }
+
+
+class StaticDeclarationForm(forms.ModelForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox, required=True)
+
+    class Meta:
+        model = StaticDeclaration
+        fields = '__all__'
+        exclude = ['user']
+
+
+class ImportDeclarationForm(forms.ModelForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox, required=True)
+
+    class Meta:
+        model = ImportDeclaration
+        fields = '__all__'
+        exclude = ['user']
