@@ -14,8 +14,21 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col">
-                        <form method="post">
-
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row mb-3 justify-content-center">
+                                <div class="col-auto">
+                                    {{ form.doc }}
+                                </div>
+                            </div>
+                            <div class="row mb-3 justify-content-center">
+                                <div class="col-auto">
+                                    {{ form.captcha }}
+                                    <div class="mt-1 text-danger">
+                                        {{ form.captcha.errors }}
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col d-flex justify-content-center">
                                     <button type="submit" class="btn btn-success">Отправить заявку</button>

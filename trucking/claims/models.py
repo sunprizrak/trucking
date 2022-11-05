@@ -4,11 +4,11 @@ from .utils import create_doc
 
 
 def path_static_dec(instance, filename):
-    return 'Организации/{user_unp}/Документы(Заявки)/Статическая_декларация/{user_email}/{filename}'.format(user_unp=instance.unp, user_email=instance.email, filename=filename)
+    return 'Организации/{user_unp}/Документы(Заявки)/Статическая_декларация/{user_email}/{filename}'.format(user_unp=instance.user.unp, user_email=instance.user.email, filename=filename)
 
 
 def path_import_dec(instance, filename):
-    return 'Организации/{user_unp}/Документы(Заявки)/Импортная_декларация/{user_email}/{filename}'.format(user_unp=instance.unp, user_email=instance.email, filename=filename)
+    return 'Организации/{user_unp}/Документы(Заявки)/Импортная_декларация/{user_email}/{filename}'.format(user_unp=instance.user.unp, user_email=instance.user.email, filename=filename)
 
 
 class Claim(models.Model):
@@ -98,6 +98,13 @@ class ShippingClaim(Claim):
     per_unload_msg = models.CharField(verbose_name='Messenger', max_length=3, choices=MESENGERS, blank=True)
     per_unload_msg_number = models.CharField(verbose_name='Номер мессенджера', max_length=30, blank=True)
     doc = models.FileField(verbose_name='Документ(Заявка)', max_length=255, blank=True)
+    STATUSES = (
+        ('F', 'Обрабатывается'),
+        ('S', 'В пути'),
+        ('E', 'Доставлена'),
+    )
+    status = models.CharField(verbose_name='Статус', max_length=1, default='F', choices=STATUSES, blank=True)
+    price = models.DecimalField(verbose_name='Стоимость', max_digits=10, decimal_places=2, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         super().save()

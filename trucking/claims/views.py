@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, ListView
 
-from claims.forms import ShippingClaimForm, StaticDeclarationForm, ImportDeclarationForm
+from .models import ShippingClaim, StaticDeclaration, ImportDeclaration
+from .forms import ShippingClaimForm, StaticDeclarationForm, ImportDeclarationForm
 
 
 class ShippingClaimView(FormView):
@@ -51,3 +52,14 @@ class ImportDeclarationView(FormView):
         form.save()
         messages.success(self.request, 'Импортная декларация успешно оформлена!')
         return super(ImportDeclarationView, self).form_valid(form)
+
+
+class ArchiveView(ListView):
+    model = ShippingClaim
+    paginate_by = 1
+    ordering = ['-created']
+    template_name = 'claims/archive.html'
+    context_object_name = 'shipping'
+    extra_context = {
+        'title': 'Архив',
+    }

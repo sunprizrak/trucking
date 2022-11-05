@@ -37,6 +37,7 @@ class ShippingClaimAdmin(admin.ModelAdmin):
         ('Контактная информация', {'fields': ('person_loading', 'per_load_number', ('per_load_msg', 'per_load_msg_number'),
                                               'person_unloading', 'per_unload_number', ('per_unload_msg', 'per_unload_msg_number'))}),
         ('Сформированный документ', {'fields': ('doc', )}),
+        ('Настройки администратора', {'fields': ('price', 'status',)})
     )
     search_fields = ('user__email', 'user__name',)
     ordering = ('-created',)

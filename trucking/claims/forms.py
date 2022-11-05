@@ -221,6 +221,13 @@ class StaticDeclarationForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['user']
 
+        widgets = {
+            'doc': forms.FileInput(attrs={
+                'class': 'form-control form-control-sm',
+                'accept': '.pdf, .docx, .doc, .odf, xlsx',
+            }),
+        }
+
 
 class ImportDeclarationForm(forms.ModelForm):
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox, required=True)
@@ -229,3 +236,10 @@ class ImportDeclarationForm(forms.ModelForm):
         model = ImportDeclaration
         fields = '__all__'
         exclude = ['user']
+
+        widgets = {
+            'doc': forms.FileInput(attrs={
+                'class': 'form-control form-control-sm',
+                'accept': '.pdf, .docx, .doc, .odf, xlsx',
+            }),
+        }
