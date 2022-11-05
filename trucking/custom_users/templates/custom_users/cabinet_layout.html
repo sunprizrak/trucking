@@ -9,58 +9,60 @@
             <div class="container">
                 <div class="row">
                     <section id="col-left-menu" class="col-2 pt-3">
-                        <div id="left-menu" class="position-sticky">
-                            <ul class="nav flex-column pt-2" id="nav-profile">
-                                <li class="nav-item">
-                                    <a class="nav-link link-dark rounded {% if 'profile' in request.path %}active{% endif %}" href="{% url 'profile' %}">
-                                        <i class="fa-solid fa-user"></i>
-                                        Профиль
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link link-dark rounded" href="#">
-                                        <i class="fa-solid fa-scale-balanced"></i>
-                                        Сальдо
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link link-dark rounded" id="nav-profile-toogle" role="button" data-bs-toggle="collapse" data-bs-target="#insurance-collapse" aria-expanded="true">
-                                        <i class="fa-solid fa-caret-right"></i>
-                                        Оформление
-                                    </a>
-                                    <div class="container">
-                                        <ul class="nav collapse show" id="insurance-collapse">
-                                            <li class="nav-item">
-                                                <a class="nav-link link-dark rounded {% if 'shipping_claim' in request.path %}active{% endif %}" href="{% url 'shipping_claim' %}">
-                                                    Перевозка
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link link-dark rounded {% if 'static_declaration' in request.path %}active{% endif %}" href="{% url 'static_declaration' %}">
-                                                    Статическая декларация
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link link-dark rounded {% if 'import_declaration' in request.path %}active{% endif %}" href="{% url 'import_declaration' %}">
-                                                    Импортная декларация
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link link-dark rounded {% if 'archive' in request.path %}active{% endif %}" href="{% url 'archive' %}">
-                                        <i class="fa-solid fa-box"></i>
-                                        Aрхив
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link link-dark rounded" href="#">
-                                        <i class="fa-solid fa-file-invoice"></i>
-                                        Шаблоны документов
-                                    </a>
-                                </li>
-                            </ul>
+                        <div id="left-menu" class="row-cols-1 position-sticky">
+                            <div class="col">
+                                <ul class="nav flex-column pt-2" id="nav-profile">
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded {% if 'profile' in request.path %}active{% endif %}" role="button" href="{% url 'profile' %}">
+                                            <i class="fa-solid fa-user"></i>
+                                            Профиль
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded" href="#">
+                                            <i class="fa-solid fa-scale-balanced"></i>
+                                            Сальдо
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded" role="button" data-bs-toggle="collapse" data-bs-target="#insurance-collapse" aria-expanded="True">
+                                            <i class="fa-solid fa-caret-right"></i>
+                                            Оформление
+                                        </a>
+                                        <div class="container">
+                                            <ul class="nav collapse show" id="insurance-collapse">
+                                                <li class="nav-item">
+                                                    <a class="nav-link link-dark rounded {% if 'make/shipping_claim' in request.path %}active{% endif %}" role="button" href="{% url 'make_shipping_claim' %}">
+                                                        Перевозка
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link link-dark rounded {% if 'make/static_declaration' in request.path %}active{% endif %}" role="button" href="{% url 'make_static_declaration' %}">
+                                                        Статическая декларация
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link link-dark rounded {% if 'make/import_declaration' in request.path %}active{% endif %}" role="button" href="{% url 'make_import_declaration' %}">
+                                                        Импортная декларация
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded {% if 'archive' in request.path %}active{% endif %}" role="button" href="{% url 'archive_shipping_claim' %}">
+                                            <i class="fa-solid fa-box"></i>
+                                            Aрхив
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-dark rounded" href="#">
+                                            <i class="fa-solid fa-file-invoice"></i>
+                                            Шаблоны документов
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </section>
                     <section class="col-10 pt-3">

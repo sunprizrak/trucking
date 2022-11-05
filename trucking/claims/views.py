@@ -54,12 +54,34 @@ class ImportDeclarationView(FormView):
         return super(ImportDeclarationView, self).form_valid(form)
 
 
-class ArchiveView(ListView):
+class ArchiveShippingView(ListView):
     model = ShippingClaim
     paginate_by = 1
     ordering = ['-created']
-    template_name = 'claims/archive.html'
+    template_name = 'claims/archive_shipping.html'
     context_object_name = 'shipping'
     extra_context = {
-        'title': 'Архив',
+        'title': 'Архив перевозок',
+    }
+
+
+class ArchiveStaticView(ListView):
+    model = StaticDeclaration
+    paginate_by = 1
+    ordering = ['-created']
+    template_name = 'claims/archive_static.html'
+    context_object_name = 'static'
+    extra_context = {
+        'title': 'Архив статических деклараций',
+    }
+
+
+class ArchiveImportView(ListView):
+    model = ImportDeclaration
+    paginate_by = 1
+    ordering = ['-created']
+    template_name = 'claims/archive_import.html'
+    context_object_name = 'import'
+    extra_context = {
+        'title': 'Архив импортных деклараций',
     }

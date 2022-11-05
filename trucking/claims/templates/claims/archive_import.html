@@ -1,0 +1,25 @@
+{% extends 'claims/archive_layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content_archive_layout %}
+    <table class="table table-hover">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">Дата</th>
+                <th scope="col">документ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dec in static %}
+                <tr class="text-center">
+                    <td>{{ dec.created|date:"d.m.Y" }}</td>
+                    <td>
+                        <a href="{{ dec.doc.url}}">скачать декларацию</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

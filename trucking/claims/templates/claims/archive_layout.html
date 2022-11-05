@@ -1,0 +1,62 @@
+{% extends 'custom_users/cabinet_layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content_cabinet_layout %}
+    {% if request.user.check_profile %}
+        <div class="row-cols-1">
+            <div class="col mb-3 text-center">
+                <h4>Архив</h4>
+            </div>
+            <div class="col mb-3 d-flex justify-content-center">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'archive/shipping_claim' in request.path %}active{% endif %}" role="button" href="{% url 'archive_shipping_claim' %}">Перевозка</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'archive/static_declaration' in request.path %}active{% endif %}" role="button" href="{% url 'archive_static_declaration' %}">Стат. декларация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'archive/import_declaration' in request.path %}active{% endif %}" role="button" href="{% url 'archive_import_declaration' %}">Имп.декларация</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col mb-3">
+                {% block content_archive_layout %}
+                {% endblock %}
+            </div>
+            <div class="col">
+                {% if page_obj.has_other_pages %}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for page in paginator.page_range %}
+                                {% if page_obj.number == page %}
+                                    <li class="page-item active" aria-current="page"><a class="page-link">{{ page }}</a></li>
+                                {% elif page >= page_obj.number|add:-2 and page <= page_obj.number|add:2 %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <h1 class="text-center mt-5">Заполните профиль организации</h1>
+    {% endif %}
+{% endblock %}

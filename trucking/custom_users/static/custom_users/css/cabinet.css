@@ -14,10 +14,10 @@
     font-size: 14px;
 }
 
-.nav a:hover {
+#left-menu .nav a:hover {
     background-color: #d2f4ea;
 }
 
-.active {
+#left-menu .active {
     background-color: #d2f4ea;
 }
