@@ -2,6 +2,10 @@
     border-right: 1px solid #c8c9ca;
 }
 
+#nav-profile {
+    height: 65%;
+}
+
 #nav-profile-toogle[aria-expanded='true'] i {
     transform: rotate(90deg);
 }
@@ -14,10 +18,10 @@
     font-size: 14px;
 }
 
-#left-menu .nav a:hover {
+#col-left-menu a:hover {
     background-color: #d2f4ea;
 }
 
-#left-menu .active {
+#col-left-menu .active {
     background-color: #d2f4ea;
 }

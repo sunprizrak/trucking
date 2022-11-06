@@ -9,7 +9,7 @@ from .forms import ShippingClaimForm, StaticDeclarationForm, ImportDeclarationFo
 class ShippingClaimView(FormView):
     form_class = ShippingClaimForm
     template_name = 'claims/shipping_claim.html'
-    success_url = reverse_lazy('shipping_claim')
+    success_url = reverse_lazy('make_shipping_claim')
     extra_context = {
         'title': 'Оформление заявки на перевозку',
     }
@@ -25,7 +25,7 @@ class ShippingClaimView(FormView):
 class StaticDeclarationView(FormView):
     form_class = StaticDeclarationForm
     template_name = 'claims/static_declaration.html'
-    success_url = reverse_lazy('static_declaration')
+    success_url = reverse_lazy('make_static_declaration')
     extra_context = {
         'title': 'Оформление статической декларации',
     }
@@ -41,7 +41,7 @@ class StaticDeclarationView(FormView):
 class ImportDeclarationView(FormView):
     form_class = ImportDeclarationForm
     template_name = 'claims/import_declaration.html'
-    success_url = reverse_lazy('import_declaration')
+    success_url = reverse_lazy('make_import_declaration')
     extra_context = {
         'title': 'Оформление импортной декларации',
     }
@@ -56,7 +56,7 @@ class ImportDeclarationView(FormView):
 
 class ArchiveShippingView(ListView):
     model = ShippingClaim
-    paginate_by = 1
+    paginate_by = 10
     ordering = ['-created']
     template_name = 'claims/archive_shipping.html'
     context_object_name = 'shipping'

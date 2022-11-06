@@ -1,47 +1,46 @@
 {% load static %}
-<header class="mb-5">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Логотип</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">О нас</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Услуги</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Клиентам</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Партнёрам</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Контакты</a>
-                    </li>
-                </ul>
-            </div>
-            {% if request.user.is_authenticated %}
-                <div class="dropdown">
-                    <a id="username" class="nav-link link-dark" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ user.email }}
-                        <i class="fa-solid fa-caret-left"></i>
-                    </a>
-                    <div id="username-menu" class="container dropdown-menu dropdown-menu-end" aria-labelledby="username">
-                        <ul class="nav flex-column text-center" >
-                            <li class="nav-item"><a class="nav-link link-dark rounded" href="{% url 'profile' %}">Личный кабинет</a></li>
-                            <li class="nav-item"><a class="nav-link link-dark rounded" href="{% url 'logout' %}">Выйти</a></li>
-                        </ul>
-                    </div>
 
-                </div>
-            {% else %}
-                <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}"><button class="btn btn-outline-success ms-3">Личный кабинет</button></a>
-            {% endif %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Логотип</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Услуги</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Клиентам</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Партнёрам</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-</header>
+        {% if request.user.is_authenticated %}
+            <div class="dropdown">
+                <a id="username" class="nav-link link-dark" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.email }}
+                    <i class="fa-solid fa-caret-left"></i>
+                </a>
+                <div id="username-menu" class="container dropdown-menu dropdown-menu-end" aria-labelledby="username">
+                    <ul class="nav flex-column text-center" >
+                        <li class="nav-item"><a class="nav-link link-dark rounded" href="{% url 'profile' %}">Личный кабинет</a></li>
+                        <li class="nav-item"><a class="nav-link link-dark rounded" href="{% url 'logout' %}">Выйти</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        {% else %}
+            <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}"><button class="btn btn-outline-success ms-3">Личный кабинет</button></a>
+        {% endif %}
+    </div>
+</nav>
