@@ -8,7 +8,7 @@
         <div class="container" id="private-office">
             <div class="row">
                 <section  class="col-2 pt-3" id="col-left-menu">
-                    <div class="row-cols-1 position-sticky vh-100">
+                    <div class="row-cols-1 position-sticky" id="left-menu">
                         <div class="col" id="nav-profile">
                             <ul class="nav flex-column pt-2">
                                 <li class="nav-item mb-1">
@@ -98,8 +98,5 @@
 
 {% block js %}
     <script src="{% static 'custom_users/js/bootstrap_toggle_button.js' %}"></script>
-    <script>
-        let position = $('#left-menu').position();
-        $('#left-menu').css('top', position.top);
-    </script>
+    <script src="{% static 'custom_users/js/left_menu.js' %}"></script>
 {% endblock %}
