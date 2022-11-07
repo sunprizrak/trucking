@@ -25,3 +25,8 @@
 #col-left-menu .active {
     background-color: #d2f4ea;
 }
+
+.errorlist {
+    font-size: .875em;
+    color: #dc3545;
+}

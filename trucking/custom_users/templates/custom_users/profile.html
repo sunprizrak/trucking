@@ -13,85 +13,55 @@
             </div>
             <div class="row mb-3">
                 <div class="col d-flex justify-content-center">
-                    <form id="profile-edit" class="needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+                    <form id="profile-edit" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="row">
+                        <div class="row mb-2">
+                            <label class="col col-form-label">Наименование организации:</label>
                             <div class="col">
-                                <div class="row mb-3">
-                                    <div class="col-auto">
-                                        <label class="form-label">Наименование организации:</label>
+                                {{ form.name }}
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col col-form-label">Юридический адрес:</label>
+                            <div class="col">
+                                {{ form.address }}
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col col-form-label">Email:</label>
+                            <div class="col">
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col col-form-label">Банковский счёт:</label>
+                            <div class="col">
+                                {{ form.bank_account }}
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col col-form-label">УНП:</label>
+                            <div class="col">
+                                <div class="row-cols-1">
+                                    <div class="col">
+                                        {{ form.unp }}
                                     </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-auto">
-                                        <label class="form-label">Юридический адрес:</label>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-auto">
-                                        <label class="form-label">Email:</label>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-auto">
-                                        <label class="form-label">Банковский счёт:</label>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-auto">
-                                        <label class="form-label">УНП:</label>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-auto">
-                                        <label class="form-label">Договор на грузоперевозки:</label>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-auto">
-                                        <label class="form-label">Договор на оказание услуг таможенного представителя:</label>
+                                    <div class="col mt-1">
+                                        {{ form.unp.errors }}
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col col-form-label">Договор на грузоперевозки:</label>
                             <div class="col">
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        {{ form.name }}
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        {{ form.address }}
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        {{ form.email }}
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        {{ form.bank_account }}
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        {{ form.unp }}
-                                        <div class="invalid-feedback">
-                                            Должен состоять из 9 цифр.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        {{ form.contract_1 }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col mb-3 pt-4">
-                                        {{ form.contract_2 }}
-                                    </div>
-                                </div>
+                                 {{ form.contract_1 }}
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col col-form-label">Договор на оказание услуг таможенного представителя:</label>
+                            <div class="col mt-3">
+                                {{ form.contract_2 }}
                             </div>
                         </div>
                         <div class="row">
