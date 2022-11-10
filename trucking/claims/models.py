@@ -64,15 +64,15 @@ class ShippingClaim(Claim):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     code = models.CharField(verbose_name='Код ТН ВЭД', max_length=10)
     FEATURES = (
-        ('D', 'Опасный'),
-        ('ND', 'Не опасный'),
+        ('YES', 'Опасный'),
+        ('NO', 'Не опасный'),
     )
-    cargo_features = models.CharField(verbose_name='Особеннонсти груза', max_length=2, default='ND', choices=FEATURES)
+    cargo_features = models.CharField(verbose_name='Особеннонсти груза', max_length=3, default=None, choices=FEATURES)
     INSURANCE = (
         ('YES', 'Требуется'),
         ('NO', 'Не требуется'),
     )
-    cargo_insurance = models.CharField(verbose_name='Страхование граза', max_length=3, default='NO', choices=INSURANCE)
+    cargo_insurance = models.CharField(verbose_name='Страхование граза', max_length=3, default=None, choices=INSURANCE)
     date_loading = models.DateField(verbose_name='Дата Загрузки')
     TRANSPORT = (
         (None, 'Выбрать'),

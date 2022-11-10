@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">Логотип</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,8 +26,8 @@
             </ul>
         </div>
         {% if request.user.is_authenticated %}
-            <div class="dropdown">
-                <a id="username" class="nav-link link-dark" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown d-none d-xl-block">
+                <a id="username" class="text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ user.email }}
                     <i class="fa-solid fa-caret-left"></i>
                 </a>
@@ -37,10 +37,9 @@
                         <li class="nav-item"><a class="nav-link link-dark rounded" href="{% url 'logout' %}">Выйти</a></li>
                     </ul>
                 </div>
-
             </div>
         {% else %}
-            <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}"><button class="btn btn-outline-success ms-3">Личный кабинет</button></a>
+            <a href="{% url 'social:begin' 'google-oauth2' %}"><button class="btn btn-outline-success ms-3">Личный кабинет</button></a>
         {% endif %}
     </div>
 </nav>

@@ -1,7 +1,7 @@
 {% load static %}
 <div class="modal fade" id="form_modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="form_modalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form id="claim" name="pre_claim" class="needs-validation claim_cache" novalidate>
+        <form id="pre_claim" class="needs-validation" novalidate>
             {% csrf_token %}
             <div class="modal-content">
                 <div class="modal-header">

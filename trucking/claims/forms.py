@@ -165,12 +165,10 @@ class ShippingClaimForm(forms.ModelForm):
             'cargo_features': forms.RadioSelect(attrs={
                 'class': 'form-check-input',
                 'type': 'radio',
-                'required': True,
             }),
             'cargo_insurance': forms.RadioSelect(attrs={
                 'class': 'form-check-input',
                 'type': 'radio',
-                'required': True,
             }),
             'date_loading': forms.DateInput(attrs={
                 'class': 'form-control',

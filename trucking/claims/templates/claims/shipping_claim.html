@@ -6,7 +6,7 @@
 {% block content_cabinet_layout %}
     {% if request.user.check_profile %}
         <div class="row mb-3">
-            <div class="col">
+            <div class="col" id="shipping_claim">
                 <div class="row">
                     <div class="col d-flex justify-content-center pb-2">
                         <h4>Оформление заявки на перевозку</h4>
@@ -14,7 +14,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col">
-                        <form name="ship_claim" class="container needs-validation" method="post" novalidate>
+                        <form id="ship_claim" class="container needs-validation" method="post" novalidate>
                             {% csrf_token %}
                             <div class="row mb-3">
                                 <div class="col"><hr></div>

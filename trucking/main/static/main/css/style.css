@@ -45,8 +45,9 @@ input::-webkit-inner-spin-button {
 }
 
 .alert {
-    top: 30%;
+    top: 40%;
     left: 40%;
+    z-index: 10000;
 }
 
 .carousel-item img {

@@ -1,6 +1,6 @@
-#col-left-menu {
+/*#col-left-menu {
     border-right: 1px solid #c8c9ca;
-}
+}*/
 
 #nav-profile-toogle[aria-expanded='true'] i {
     transform: rotate(90deg);
