@@ -27,7 +27,7 @@ services:
       - static_volume:/home/trucking/web/staticfiles
       - media_volume:/home/trucking/web/mediafiles
     ports:
-      - 443:443
+      - 80:80
     restart: always
     depends_on:
       - web
