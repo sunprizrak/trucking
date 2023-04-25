@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 if ! [ -x "$(command -v docker-compose)" ]; then
   echo 'Error: docker-compose is not installed.' >&2
   exit 1
 fi
 
-domains=(5-180-183-166.cloud-xip.com www.5-180-183-166.cloud-xip.com)
+domains=[5-180-183-166.cloud-xip.com, www.5-180-183-166.cloud-xip.com]
 rsa_key_size=4096
 data_path="./data/certbot"
 email="6574152@gmail.com" # Adding a valid address is strongly recommended
