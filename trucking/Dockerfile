@@ -20,4 +20,4 @@ COPY ./entrypoint.sh /usr/src/
 # copy project
 COPY . .
 
-ENTRYPOINT ["/usr/src/trucking/entrypoint.sh"]
+ENTRYPOINT ["sh", "/usr/src/trucking/entrypoint.sh"]

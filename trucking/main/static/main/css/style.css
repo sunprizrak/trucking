@@ -2,25 +2,34 @@
 @import url('/static/custom_users/css/cabinet.css');
 
 
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+
+}
+
+#panorama-container {
+    width: 100%;
+    height: 100%;
+}
+
+/*body {
+    background-image: url(../img/index_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}*/
+
+
 /* Убрать справа кнопки с input=number */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-.navbar {
-    background: #fff;
-}
-
-.navbar-brand {
-    width: 3%;
-}
-
-.navbar-brand img {
-    width: 100%;
-    border-radius: 50%;
 }
 
 #username[aria-expanded='true'] i {
@@ -61,4 +70,48 @@ input::-webkit-inner-spin-button {
 
 .carousel-item img {
     height: 500px;
+    background-color: #fba55e;
 }
+
+.cst-btn {
+    font-size: 1.5rem !important;
+}
+
+/* Pulse button */
+
+#pulse_button {
+    font-size: 2rem;
+}
+
+#pulse_button:hover {
+    animation: none;
+}
+
+.pulse {
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        box-shadow:
+            0 0 0 0 rgb(255, 202, 44, 0.7),
+            0 0 0 0 rgb(255, 202, 44, 0.7)
+    }
+    40% {
+        box-shadow:
+            0 0 0 50px rgb(255, 202, 44, 0),
+            0 0 0 0 rgb(255, 202, 44, 0.7)
+    }
+    80% {
+        box-shadow:
+            0 0 0 50px rgb(255, 202, 44, 0),
+            0 0 0 30px rgb(255, 202, 44, 0)
+    }
+    100% {
+        box-shadow:
+            0 0 0 0 rgb(255, 202, 44, 0),
+            0 0 0 30px rgb(255, 202, 44, 0)
+    }
+}
+
+/* End Pulse Button */
