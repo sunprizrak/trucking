@@ -5,10 +5,10 @@
 
 {% block content %}
     {% if request.user.is_authenticated %}
-        <div class="container" id="private-office">
-            <div class="row">
-                <section  class="col-2 pt-3 bg-light" id="col-left-menu">
-                    <div class="row-cols-1 position-sticky" id="left-menu">
+        <div class="container-fluid h-100" id="private-office">
+            <div class="row h-100">
+                <section class="col-2 pt-3 bg-light h-100" id="col-left-menu">
+                    <div class="row h-75" id="left-menu">
                         <div class="col" id="nav-profile">
                             <ul class="nav flex-column pt-2">
                                 <li class="nav-item mb-1">
@@ -62,6 +62,8 @@
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                    <div class="row-cols-1 h-auto">
                         <div class="col">
                             <hr>
                         </div>
@@ -82,9 +84,20 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row h-auto">
+                        <div class="col">
+                            <a class="nav-link link-dark rounded" href="{% url 'logout' %}">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Выйти
+                            </a>
+                        </div>
                     </div>
                 </section>
-                <section class="col-10 pt-3">
+                <section class="col-10 pt-3 h-100 overflow-auto">
                     {% include 'main/messages.html' %}
                     {% block content_cabinet_layout %}
                     {% endblock %}

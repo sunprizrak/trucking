@@ -13,7 +13,7 @@ function init() {
 
     const container = document.getElementById('panorama-container');
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+    camera = new THREE.PerspectiveCamera(85, window.innerWidth / window.innerHeight, 1, 1100);
 
     scene = new THREE.Scene();
 
@@ -21,7 +21,7 @@ function init() {
     // invert the geometry on the x-axis so that all of the faces point inward
     geometry.scale(-1, 1, 1);
 
-    const texture = new THREE.TextureLoader().load('/static/main/img/test.jpg');
+    const texture = new THREE.TextureLoader().load('/static/main/img/index_background.jpg');
     texture.colorSpace = THREE.SRGBColorSpace;
     const material = new THREE.MeshBasicMaterial({map: texture});
 
@@ -33,98 +33,6 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
-
-    container.style.touchAction = 'none';
-    container.addEventListener('pointerdown', onPointerDown);
-
-    //
-
-    document.addEventListener('dragover', function (event) {
-
-        event.preventDefault();
-        event.dataTransfer.dropEffect = 'copy';
-
-    } );
-
-    document.addEventListener('dragenter', function () {
-
-        document.body.style.opacity = 0.5;
-
-    } );
-
-    document.addEventListener('dragleave', function () {
-
-        document.body.style.opacity = 1;
-
-    } );
-
-    document.addEventListener('drop', function (event) {
-
-        event.preventDefault();
-
-        const reader = new FileReader();
-        reader.addEventListener('load', function (event) {
-
-            material.map.image.src = event.target.result;
-            material.map.needsUpdate = true;
-
-        } );
-        reader.readAsDataURL(event.dataTransfer.files[0]);
-
-        document.body.style.opacity = 1;
-
-    } );
-
-    //
-
-    window.addEventListener('resize', onWindowResize);
-
-}
-
-function onWindowResize() {
-
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-}
-
-function onPointerDown(event) {
-
-    if ( event.isPrimary === false ) return;
-
-    isUserInteracting = true;
-
-    onPointerDownMouseX = event.clientX;
-    onPointerDownMouseY = event.clientY;
-
-    onPointerDownLon = lon;
-    onPointerDownLat = lat;
-
-    document.addEventListener( 'pointermove', onPointerMove );
-    document.addEventListener( 'pointerup', onPointerUp );
-
-}
-
-function onPointerMove( event ) {
-
-    if ( event.isPrimary === false ) return;
-
-    lon = ( onPointerDownMouseX - event.clientX ) * 0.1 + onPointerDownLon;
-    lat = ( event.clientY - onPointerDownMouseY ) * 0.1 + onPointerDownLat;
-
-}
-
-function onPointerUp() {
-
-    if ( event.isPrimary === false ) return;
-
-    isUserInteracting = false;
-
-    document.removeEventListener( 'pointermove', onPointerMove );
-    document.removeEventListener( 'pointerup', onPointerUp );
-
 }
 
 function animate() {
