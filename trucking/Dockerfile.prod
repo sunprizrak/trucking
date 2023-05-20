@@ -64,4 +64,4 @@ RUN chown -R trucking:trucking $APP_HOME
 # change to the app user
 USER trucking
 
-ENTRYPOINT ["/home/trucking/web/entrypoint.prod.sh"]
+ENTRYPOINT ["sh", "/home/trucking/web/entrypoint.prod.sh"]
