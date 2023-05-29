@@ -13,8 +13,8 @@ def path_import_dec(instance, filename):
 
 class Claim(models.Model):
     shipping_name = models.CharField(verbose_name='Наименование груза', max_length=100)
-    gross_weight = models.DecimalField(verbose_name='Вес брутто', max_digits=10, decimal_places=1, blank=True)
-    count_seats = models.IntegerField(verbose_name='Колличество мест', blank=True)
+    gross_weight = models.DecimalField(verbose_name='Вес брутто', max_digits=10, decimal_places=1, null=True, blank=True)
+    count_seats = models.IntegerField(verbose_name='Колличество мест', null=True, blank=True)
     TYPESEATS = (
         (None, 'Выбрать'),
         ('1', 'Паллеты'),
@@ -24,18 +24,18 @@ class Claim(models.Model):
         ('6', 'Коробки'),
         ('6', 'Другое'),
     )
-    length_seats = models.DecimalField(verbose_name='Длина', max_digits=10, decimal_places=1, blank=True)
-    width_seats = models.DecimalField(verbose_name='Ширина', max_digits=10, decimal_places=1, blank=True)
-    height_seats = models.DecimalField(verbose_name='Высота', max_digits=10, decimal_places=1, blank=True)
-    type_seats = models.CharField(verbose_name='Вид мест', max_length=1, choices=TYPESEATS, blank=True)
+    length_seats = models.DecimalField(verbose_name='Длина', max_digits=10, decimal_places=1, null=True, blank=True)
+    width_seats = models.DecimalField(verbose_name='Ширина', max_digits=10, decimal_places=1, null=True, blank=True)
+    height_seats = models.DecimalField(verbose_name='Высота', max_digits=10, decimal_places=1, null=True, blank=True)
+    type_seats = models.CharField(verbose_name='Вид мест', max_length=1, choices=TYPESEATS, null=True, blank=True)
     point_departure = models.CharField(verbose_name='Пункт отправления', max_length=100)
     destination = models.CharField(verbose_name='Пункт назначения', max_length=100)
     created = models.DateTimeField(verbose_name='Создана', auto_now_add=True)
 
 
 class PreliminaryClaim(Claim):
-    start_date = models.DateField(verbose_name='с', blank=True)
-    end_date = models.DateField(verbose_name='по', blank=True)
+    start_date = models.DateField(verbose_name='с', null=True, blank=True)
+    end_date = models.DateField(verbose_name='по', null=True, blank=True)
     fly = models.BooleanField(verbose_name='Авиа', default=False)
     train = models.BooleanField(verbose_name='Ж/д', default=False)
     ship = models.BooleanField(verbose_name='Море', default=False)
