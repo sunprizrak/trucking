@@ -18,35 +18,29 @@ class PreliminaryClaimForm(forms.ModelForm):
             'gross_weight': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': '0.0',
-                'required': True,
                 'min': 0,
             }),
             'count_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': '0',
-                'required': True,
                 'min': 0,
             }),
             'type_seats': forms.Select(attrs={
                 'class': 'form-select',
-                'required': True,
             }),
             'length_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': '0.0',
-                'required': True,
                 'min': 0,
             }),
             'width_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': '0.0',
-                'required': True,
                 'min': 0,
             }),
             'height_seats': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': '0.0',
-                'required': True,
                 'min': 0,
             }),
             'fly': forms.CheckboxInput(attrs={
@@ -76,13 +70,11 @@ class PreliminaryClaimForm(forms.ModelForm):
             'start_date': forms.DateInput(attrs={
                 'class': 'form-control',
                 'type': 'date',
-                'required': True,
                 'placeholder': 'дд.мм.гггг',
             }),
             'end_date': forms.DateInput(attrs={
                 'class': 'form-control',
                 'type': 'date',
-                'required': True,
                 'placeholder': 'дд.мм.гггг',
             }),
             'phone_number': forms.NumberInput(attrs={
