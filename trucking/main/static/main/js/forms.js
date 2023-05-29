@@ -45,8 +45,8 @@ function validate_modal_form() {
 
                             let myAlert = $('<div' +
                                                  ' class="alert alert-success' +
-                                                    ' d-flex align-items-center position-absolute' +
-                                                    ' animate__animated animate__backInDown">' +
+                                                    ' d-flex align-self-center position-absolute' +
+                                                    ' animate__animated animate__backInDown" style="left: 42.7%">' +
                                                  '<i class="fa-solid fa-circle-check"' +
                                                  ' style="margin-right: 0.5rem; font-size: 1.5rem;"></i>' +
                                                  '<div>Ставка запрошена успешно!</div>' +
