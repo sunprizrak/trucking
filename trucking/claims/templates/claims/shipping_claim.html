@@ -6,7 +6,7 @@
 {% block content_cabinet_layout %}
     {% if request.user.check_profile %}
         <div class="row mb-3">
-            <div class="col" id="shipping_claim">
+            <div class="col position-relative" id="shipping_claim">
                 <div class="row">
                     <div class="col d-flex justify-content-center pb-2">
                         <h4>Оформление заявки на перевозку</h4>
@@ -91,32 +91,24 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="form-label">Габариты места (д/ш/в)</label>
-                                <div class="input-group">
-                                    <div class="col-2">
-                                        {{ form.length_seats }}
-                                        <div class="invalid-feedback">
-                                            Обязательное поле.
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="input-group-text">/</span>
-                                    </div>
-                                    <div class="col-2">
-                                        {{ form.width_seats }}
-                                        <div class="invalid-feedback">
-                                            Обязательное поле.
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="input-group-text">/</span>
-                                    </div>
-                                    <div class="col-2">
-                                        {{ form.height_seats }}
-                                        <div class="invalid-feedback">
-                                            Обязательное поле.
-                                        </div>
-                                    </div>
+                                <label class="form-label">Габариты места</label>
+                                <div class="col-auto">
+                                    <label class="col-form-label">Длина</label>
+                                </div>
+                                <div class="col-1">
+                                    {{ form.length_seats }}
+                                </div>
+                                <div class="col-auto">
+                                    <label class="col-form-label">Ширина</label>
+                                </div>
+                                <div class="col-1">
+                                    {{ form.width_seats }}
+                                </div>
+                                <div class="col-auto">
+                                    <label class="col-form-label">Высота</label>
+                                </div>
+                                <div class="col-1">
+                                    {{ form.height_seats }}
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -232,6 +224,7 @@
                         </form>
                     </div>
                 </div>
+                {% include 'main/messages.html' %}
             </div>
         </div>
     {% else %}

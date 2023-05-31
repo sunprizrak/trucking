@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col d-flex justify-content-center">
+                <div class="col d-flex justify-content-center position-relative">
                     <form id="profile-edit" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="row mb-2">
@@ -70,6 +70,7 @@
                             </div>
                         </div>
                     </form>
+                    {% include 'main/messages.html' %}
                 </div>
             </div>
         </div>

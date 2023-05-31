@@ -1,20 +1,20 @@
 function validate_form() {
-  'use strict'
+    'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  let forms = document.querySelectorAll('.needs-validation');
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    let forms = document.querySelectorAll('.needs-validation');
 
   // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
 
-        form.classList.add('was-validated');
-      }, false)
+            form.classList.add('was-validated');
+          }, false)
     });
 }
 
@@ -68,7 +68,7 @@ function validate_modal_form() {
 function clear_modal_form(id_form) {
     let form = $(id_form);
     form[0].reset();
-    localStorage.removeItem(form.attr('id'));
+    localStorage.removeItem(form.id);
     if (form.hasClass('was-validated')) {
         form.removeClass('was-validated');
     }
@@ -161,5 +161,4 @@ $(function () {
     validate_form();
     validate_modal_form();
     $('#pre_claim').FormCache();
-    $('#ship_claim').FormCache();
 });

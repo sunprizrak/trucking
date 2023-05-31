@@ -1,5 +1,5 @@
 .modal-dialog {
-    max-width: 50% !important;
+    max-width: 60% !important;
 }
 
 .captcha-error {
@@ -9,3 +9,11 @@
     font-size: .875em;
     color: #dc3545;
 }
+
+/* Preliminary claim */
+
+#left-col {
+    border-right: 2px solid #f4f5f7;
+}
+
+/* End Preliminary claim */
