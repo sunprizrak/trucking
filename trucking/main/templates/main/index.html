@@ -4,10 +4,14 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div id="panorama-container"></div>
-    <button type="button" id='pulse_button' class="btn btn-warning btn-lg position-absolute top-50 start-50 translate-middle pulse" data-bs-toggle="modal" data-bs-target="#form_modal">Запросить ставку</button>
+    <section class="position-relative">
+        <div id="panorama-container"></div>
+        <button type="button" id='pulse_button' class="btn btn-warning btn-lg position-absolute top-50 start-50 translate-middle pulse" data-bs-toggle="modal" data-bs-target="#form_modal">Запросить ставку</button>
+        <canvas class="position-absolute bottom-0 start-0" id="canvas-yodco"></canvas>
+    </section>
 {% endblock %}
 
 {% block js %}
     <script src="{% static 'main/js/background.js' %}"></script>
+    <script src="{% static 'main/js/canvas_yodco.js' %}"></script>
 {% endblock %}
