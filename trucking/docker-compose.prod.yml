@@ -11,12 +11,16 @@ services:
       - media_volume:/home/trucking/web/mediafiles
     expose:
       - "8000"
+    stdin_open: true
+    tty: true
     env_file:
       - ./.env.prod
     depends_on:
       - db
   db:
     image: postgres:15.2-alpine
+    stdin_open: true
+    tty: true
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
@@ -31,6 +35,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    stdin_open: true
+    tty: true
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     restart: always
     depends_on:
@@ -41,6 +47,8 @@ services:
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
+    stdin_open: true
+    tty: true
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 volumes:
     postgres_data:
