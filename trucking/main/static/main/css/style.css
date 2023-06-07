@@ -34,14 +34,6 @@ input::-webkit-inner-spin-button {
     font-size: 1.5rem !important;
 }
 
-/* Canvas Yodco dev */
-
-#canvas-yodco {
-    width: 300px;
-}
-
-/* Canvas Yodco end */
-
 /* Pulse button */
 
 #pulse_button {

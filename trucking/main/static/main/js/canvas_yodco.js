@@ -1,15 +1,15 @@
 var txt = "Yodco Devolopment 2023";
-var txtH = 130;
+var txtH = 25;
 var font = "sans-serif";
 var bg = "#000";
 var rayColor1 = "#ffca2c";
 var rayColor2 = "#ffca2c";
-var fade = 1000;
+var rayColor3 = "#ffca2c";
 
 var canvas = document.getElementById("canvas-yodco");
 var ctx = canvas.getContext("2d");
-var cw = canvas.width = window.innerWidth;
-var ch = canvas.height = window.innerHeight;
+var cw = canvas.width = 400;
+var ch = canvas.height = 100;
 
 var w2 = cw/2;
 var h2 = ch/2;
@@ -25,17 +25,15 @@ txtCanvas.width = txtW;
 txtCanvas.height = txtH*1.5;
 
 var gradient = ctx.createRadialGradient(w2, h2, 0, w2, h2, txtW);
-gradient.addColorStop(0, rayColor2);
+gradient.addColorStop(0, rayColor3);
+gradient.addColorStop(.5, rayColor2);
 gradient.addColorStop(1, rayColor1);
 ctx.strokeStyle = gradient;
 
 txtCtx.fillStyle = gradient;
 txtCtx.font = txtH + "px " + font;
 txtCtx.textBaseline = "middle";
-txtCtx.fillText(txt,0,txtH*.5);
-
-//dirty adjust for descends
-txtH *= 1.5;
+txtCtx.fillText(txt,0, txtH*.5);
 
 var bufferCanvas = document.createElement("canvas");
 bufferCanvas.width = txtW;
@@ -70,7 +68,7 @@ function tick() {
   ctx.clearRect(0,0,cw,ch)
   ctx.drawImage(bufferCanvas, 0, 0, current, txtH, sx, sy, current, txtH)
   ctx.save()
-  ctx.globalAlpha = .07;
+  ctx.globalAlpha = .05;
   ctx.globalCompositeOperation = "lighter";
   if(drawRays(current)){
     current++;
@@ -114,9 +112,6 @@ function drawRays(c){
   return count !== rays.length;
 }
 
-function filterRays(r){
-  return Boolean(r);
-}
 
 function Ray(row, col, f){
   this.col = col;
@@ -133,12 +128,21 @@ function Ray(row, col, f){
     a = (Math.random() - .5) * pi2;
   }
   var da = .02 * Math.sign(a);
+
+  var q = 2*pi * (this.col - txtW*.5) / txtW;
+  if(q === 0){
+    q = (Math.random() - .5) * pi;
+  }
+  var dq = .02 * Math.sign(q);
+
   da += (Math.random() - .5) * .005;
   var l = 0;
   var dl = Math.random()*2 + 2;
 
   var buffered = false;
+
   this.reset = function(){
+    q = 2*pi * (this.col - txtW*.5) / txtW;
     a = pi2 * (this.row - ath*.5) / ath;
     if(a === 0){
       a = -pi2*.5;
@@ -156,8 +160,12 @@ function Ray(row, col, f){
       return 1;
     }else{
       ctx.moveTo(xp, yp)
-      ctx.lineTo(xp + Math.cos(a) * l, yp + Math.sin(a) * l);
+      ctx.quadraticCurveTo(xp + Math.cos(q) * l*.5,
+                        yp + Math.sin(q) * l*.5,
+                        xp + Math.cos(a) * l,
+                        yp + Math.sin(a));
       a += da;
+      q += dq;
       l += Math.cos(a)*dl;
       return 0;
     }
